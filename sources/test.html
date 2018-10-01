@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Young Amar Animate</title>
+		<script src='jquery.js'></script>
+		<script src='jquery.young_amar_animate.js'></script>
+		<style>
+			#dark_bg_for_dialog{
+				  position:fixed;
+				  width: 100%;
+				  height: 100%;
+				  background: black;
+				  opacity: 0.8;
+				  top:0;
+				  bottom: 0;
+				  left:  0;
+				  right: 0;
+				  z-index:1;
+				  display:none;
+			}
+			#bloc{
+				display:none;
+				padding: 30px;
+				border-radius: 5px;
+			}
+	    </style>
+	</head>
+	
+	<body>
+	        <input type='button' id='aff_dialog' value='Affiche'>
+	        <div id='dark_bg_for_dialog'>       <!-- fond noir  -->
+			<div id='bloc' > <!-- boite de dialogue  -->
+			</div></div>
+			<script>
+			    
+				$(document).ready(function(){
+				    // au clique du bouton affihce
+				    $('#aff_dialog').click(function(){
+					
+						$('#dark_bg_for_dialog').css('display','block'); //le fond noir est affiche
+						//application du plugin youngAmarAnimate sur le div avec l'identifiant bloc
+						$('#bloc').youngAmarAnimate({
+							 width:		500,
+							 height:	500,
+							 bg:		'white',
+							 rapidity : 'fast',
+							 callBack : function(){
+							       // ajout de contenu apres l'animation
+							       $html = "<center><input type='text' name='prenom' id='prenom' placeholder='entrer votre prenom'><br><br><input type='text' name='nom' id='nom' placeholder='Entrer votre nom'></center>";
+								   $('#bloc').html($html);
+							 }
+						});
+					});
+					
+			   });
+			</script>
+	</body>
+</html>
